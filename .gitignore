@@ -1,3 +1,5 @@
 *.db
 *.log
 migration_backup/
+list.*.domains
+list.*.domains.sha1
