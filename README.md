@@ -25,22 +25,37 @@ This repository contains a basic Pi-hole configuration for network-wide ad block
    - Update `LOCAL_IPV4` to match your network
 4. **Run Pi-hole**:
    ```bash
-   docker run -d \
-     --name pihole \
-     -p 53:53/tcp -p 53:53/udp \
-     -p 80:80 \
-     -v "$(pwd):/etc/pihole/" \
-     --cap-add=NET_ADMIN \
-     --restart=unless-stopped \
-     pihole/pihole:latest
+   # Using Docker Compose (recommended)
+   docker-compose up -d
+   
+   # Or using the management script
+   ./pihole.sh start
    ```
+
+## Management Commands
+
+Use the included `pihole.sh` script for easy management:
+
+- `./pihole.sh start` - Start Pi-hole
+- `./pihole.sh stop` - Stop Pi-hole  
+- `./pihole.sh restart` - Restart Pi-hole
+- `./pihole.sh status` - Check status
+- `./pihole.sh logs` - View logs
+- `./pihole.sh update` - Update to latest version
+
+## Access Pi-hole
+
+- **Web Interface**: http://localhost:8080/admin
+- **HTTPS Interface**: https://localhost:8443/admin
+- **Current Network IP**: http://192.168.50.215:8080/admin
 
 ## Important Notes
 
-- **Security**: Change the default password before deployment
-- **Network Configuration**: Update IP addresses to match your network
-- **Router Setup**: Configure your router to use Pi-hole as primary DNS
-- **Maintenance**: Run `pihole -g` periodically to update blocklists
+- **Security**: Change the default password in `setupVars.conf` before deployment
+- **Network Configuration**: Current IP is set to 192.168.50.215
+- **Router Setup**: Configure your router to use 192.168.50.215 as primary DNS
+- **Auto-restart**: Container will automatically restart after system reboots
+- **Maintenance**: Run `./pihole.sh update` periodically to update Pi-hole
 
 ## Optimization Tips
 
