@@ -49,3 +49,5 @@ Thumbs.db
 unbound/dev/
 unbound/var/
 unbound/unbound.pid
+# Teleporter backups - local only, never push to public repo
+backups/*.zip
