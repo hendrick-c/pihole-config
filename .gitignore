@@ -42,3 +42,10 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+# Local secrets
+.env
+
+# Unbound runtime artifacts
+unbound/dev/
+unbound/var/
+unbound/unbound.pid
